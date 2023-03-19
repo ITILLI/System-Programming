@@ -1,0 +1,18 @@
+0000		LDI	R1, 0
+0004		LD	R2, aptr
+0008		LDI	R3, 3
+000C		LDI	R4, 4
+0010		LDI	R9, 1
+0014 FOR:	
+0014		LD	R5, [R2]	; R5=*aptr
+0018		ADD	R1,R1,R5	; R1+=*aptr
+001C		ADD	R2, R2, R4	; R2+=4
+0020		SUB	R3, R3, R9	; R3--;
+0024		CMP R3, R0		; if (R3!=0)
+0028		JNE	FOR			;   goto FOR;
+002C		ST	R1, sum		; sum=R1
+0030		LD	R8, sum		; R8=sum
+0034		RET
+0038 a:		WORD	3, 7, 4
+0044 aptr:	WORD 	a
+0048 sum:	WORD	0
