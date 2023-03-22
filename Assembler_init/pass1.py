@@ -14,15 +14,15 @@ with open("opcode.txt", 'r') as f:
 loc = 0
 symtab = {}
 
-
+#main
 with open("test.txt", 'r') as f:
   for line in f:
     #去除掉分號後的敘述
     cleaned_text = re.sub(r';.*$', '', line) 
     # 利用正則表達式將冒號和數字之間的逗號替換為空格
     cleaned_text = re.sub(r'(?<=:)\s*(\d)', r' \1', cleaned_text)
-    # 利用正則表達式去掉逗號
-    cleaned_text = re.sub(r',', '', cleaned_text)
+    # 利用正則表達式去掉逗號，補上空格
+    cleaned_text = re.sub(r',', ' ', cleaned_text)
 
     words = cleaned_text.split()
     if ':' in words[0]: #找到symbol,修改loc
