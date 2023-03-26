@@ -1,0 +1,9 @@
+T 0000 main:
+T 0000	  LDI R1,3  ;R1=3
+T 0004	  PUSH R1 ;push parameter
+T 0008	  CALL push ;push(3)
+T 000C	  CALL pop  ;pop()
+T 0010	  ST R1, x  ;x=pop()
+T 0014	  LDI R1, 0 ;ret 0
+T 0018	  RET
+T 001C x:  RESW 1

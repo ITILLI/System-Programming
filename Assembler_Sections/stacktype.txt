@@ -1,0 +1,6 @@
+.bss
+.global stack
+stack: RESW 512
+.data
+.global top
+top: WORD 0

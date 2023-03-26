@@ -1,0 +1,2 @@
+B 0000 stack: RESW 512
+D 0000 top: WORD 0

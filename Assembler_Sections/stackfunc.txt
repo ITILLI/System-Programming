@@ -1,0 +1,26 @@
+.text
+.extern stack
+.extern top
+.global push
+push:
+  POP R1  ; R1=x
+  LD R2, top  ; R2=top
+  LD R3, stack  ; R3=stack
+  LDI R4, 4 ; R4=4
+  LDI R5, 1 ; R5=1
+  MUL R6, R2, R4  ; R6=top*4
+  STR R1, [R3+R6] ; stack[top]=x
+  ADD R2, R2, R5  ; R2++
+  ST R2, top  ; top=R2
+  RET
+.global pop
+pop:
+  LD R2, top  ; R2=top
+  LD R3, stack  ; R3=stack
+  LDI R4, 4 ; R4=4
+  LDI R5, 1 ; R5=1
+  MUL R6, R2, R4  ; R6=top*4
+  LDR R1, [R3+R6] ; R1=stack[top]
+  SUB R2, R2, R5  ; R2--
+  ST R2, top  ; top=R2
+  RET

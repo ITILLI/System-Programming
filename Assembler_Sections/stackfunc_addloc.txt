@@ -1,0 +1,21 @@
+T 0000 push:
+T 0000	  POP R1  ; R1=x
+T 0004	  LD R2, top  ; R2=top
+T 0008	  LD R3, stack  ; R3=stack
+T 000C	  LDI R4, 4 ; R4=4
+T 0010	  LDI R5, 1 ; R5=1
+T 0014	  MUL R6, R2, R4  ; R6=top*4
+T 0018	  STR R1, [R3+R6] ; stack[top]=x
+T 001C	  ADD R2, R2, R5  ; R2++
+T 0020	  ST R2, top  ; top=R2
+T 0024	  RET
+T 0028 pop:
+T 0028	  LD R2, top  ; R2=top
+T 002C	  LD R3, stack  ; R3=stack
+T 0030	  LDI R4, 4 ; R4=4
+T 0034	  LDI R5, 1 ; R5=1
+T 0038	  MUL R6, R2, R4  ; R6=top*4
+T 003C	  LDR R1, [R3+R6] ; R1=stack[top]
+T 0040	  SUB R2, R2, R5  ; R2--
+T 0044	  ST R2, top  ; top=R2
+T 0048	  RET

@@ -1,0 +1,13 @@
+.text
+.extern push
+.extern pop
+.global main
+main:
+  LDI R1,3  ;R1=3
+  PUSH R1 ;push parameter
+  CALL push ;push(3)
+  CALL pop  ;pop()
+  ST R1, x  ;x=pop()
+  LDI R1, 0 ;ret 0
+  RET
+x:  RESW 1
