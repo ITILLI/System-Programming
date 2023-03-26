@@ -97,8 +97,13 @@ def TranslateInstruction(parameter, PC, opRecord):
       Cx = hex(Cx & 0xFFFFFF)[2:]
       Cx = Cx.zfill(6)
     objCode = opRecord[2:]+Cx
+  # Stack type
+  elif opRecord_int > 47 and opRecord_int < 52
+    Ra = parameter[0]
+    Cx = '00000'
+    objCode = opRecord[2:]+reg.get(Ra, '')+Cx
 
-  #L, A, J type writein
+  #L, A, J, stack type writein
   write_objprogram(objCode)
   # D type
   if opRecord_int > 239 and opRecord_int < 244:
@@ -184,8 +189,8 @@ with open('test.txt', 'r') as f:
       else: #'WORD'
         loc += 4*(len(words)-2)
     elif len(words) > 1 and words[1] =='RESB': #加上len(words) > 1 的判斷
-      loc += words[2]
+      loc += int(words[2])
     elif len(words) > 1 and words[1] =='RESW': #加上len(words) > 1 的判斷
-      loc += 4*words[2]
+      loc += 4*int(words[2])
     
 

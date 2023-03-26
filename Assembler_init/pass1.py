@@ -26,12 +26,12 @@ with open("test.txt", 'r') as f:
 
     words = cleaned_text.split()
     if ':' in words[0]: #找到symbol,修改loc
-      #symbol table
+      #每行前面加入loc
       format_loc = '{:04X}'.format(loc)
+      #symbol table
       symtab[words[0]] = format_loc
 
       #每行前面加入loc
-      #format_loc = '{:04X}'.format(loc)
       new_line = f'{format_loc} {line}'
 
       if len(words) == 1:
@@ -41,9 +41,9 @@ with open("test.txt", 'r') as f:
       elif len(words) > 1 and words[1] =='WORD': #加上len(words) > 1 的判斷
         loc += 4*(len(words)-2)
       elif len(words) > 1 and words[1] =='RESB': #加上len(words) > 1 的判斷
-        loc += words[2]
+        loc += int(words[2])
       elif len(words) > 1 and words[1] =='RESW': #加上len(words) > 1 的判斷
-        loc += 4*words[2]
+        loc += 4*int(words[2])
       else:
         print("error on", words)
         exit()
