@@ -94,13 +94,13 @@ CPU0實際上有3種定址方法：
 
 **相對定址**：
 
-LD,ST,LDB,STB這些指令都是相對定址，ex:LD R1,[R2+100]，從記憶體R2+100的位址把資料移到R1，R2稱為base register，100稱為偏移位址。
+LD,ST,LDB,STB這些指令都是**相對定址**，ex:LD R1,[R2+100]，從記憶體R2+100的位址把資料移到R1，R2稱為base register，100稱為偏移位址。
 
 `LD Ra,[Rb+Cx]`格式，如果Rb是R0可以被省略成LD R1,[100]，這就從相對定址延伸出來的**絕對定址**。
 
 **索引定址**：
 
-LDR,STR,LBR,SBR這些指令都是索引定址，舉例來說:LDR R1,[R2+R3]，從記憶體R2+R3的位址把資料移到R1，R2稱為基底暫存器，R3稱為索引(偏移)暫存器。
+LDR,STR,LBR,SBR這些指令都是**索引定址**，舉例來說:LDR R1,[R2+R3]，從記憶體R2+R3的位址把資料移到R1，R2稱為基底暫存器，R3稱為索引(偏移)暫存器。
 
 另外在舉例，ex:int a[100]，如果要存取a[i]的元素，依照`LDR Ra,[Rb+Rc]`格式，a存入到Rb，i*4(integer佔4byte)存入Rc中，然後利用`LDR Ra,[Rb+Rc]`指令，將a[i]存入Ra。
 
@@ -464,7 +464,7 @@ a.out是一種簡單且直接的格式，但其缺點是格式太過固定，因
 
 ![](img/7-1.png)
 
-程式語言相關內容包括：PL(Programming Language), Compiker, Intepreter, Assembler...等
+程式語言相關內容包括：PL(Programming Language), Computer, Intepreter, Assembler...等
 
 **程式語言也只是個資料結構？**
 
